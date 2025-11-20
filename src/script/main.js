@@ -2,14 +2,19 @@ window.onload = main
 window.onerror = errorHandle
 window.oncontextmenu = rightClick
 
-function main() {
+let game
 
+function main() {
+    game = new Game()
+    game.run()
 }
 
-function errorHandle() {
-
+function errorHandle(err, url, line, col, obj) {
+    if (obj != null) {
+        cancelAnimationFrame(game.gameLoop)
+    }
 }
 
 function rightClick() {
-    
+    return false
 }
