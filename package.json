@@ -1,0 +1,20 @@
+{
+  "name": "platformer_webgl",
+  "version": "1.0.0",
+  "description": "platformer game webgl",
+  "homepage": "https://github.com/pupungeggang4/WebGL-Platformer#readme",
+  "bugs": {
+    "url": "https://github.com/pupungeggang4/WebGL-Platformer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pupungeggang4/WebGL-Platformer.git"
+  },
+  "license": "ISC",
+  "author": "pupungeggang4",
+  "type": "commonjs",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

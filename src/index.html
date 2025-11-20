@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>WebGL Platformer Game</title>
+        <style>
+            body {
+                touch-action: none;
+                overscroll-behavior: none;
+            }
+
+            #screen {
+                border: 2px solid black;
+                position: absolute;
+                left: 0;
+                right: 0;
+                up: 0;
+                down: 0;
+                margin: auto;
+                max-width: 96%;
+                max-height: 96%;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id='screen' width='1280' height='720'></canvas>
+        <script src='script/asset.js'></script>
+        <script src='script/ui.js'></script>
+        <script src='script/vshader.js'></script>
+        <script src='script/fshader.js'></script>
+
+        <script src='script/shape.js'></script>
+        <script src='script/field.js'></script>
+        <script src='script/entity/entity.js'></script>
+        <script src='script/entity/unit.js'></script>
+
+        <script src='script/func.js'></script>
+        <script src='script/physics.js'></script>
+        <script src='script/render.js'></script>
+        <script src='script/game.js'></script>
+
+        <script src='script/scenetitle.js'></script>
+        <script src='script/scenemain.js'></script>
+
+        <script src='script/main.js'></script>
+    </body>
+</html>
