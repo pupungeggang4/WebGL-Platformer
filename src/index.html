@@ -4,6 +4,11 @@
         <meta charset="UTF-8"/>
         <title>WebGL Platformer Game</title>
         <style>
+            @font-face {
+                font-family: 'neodgm';
+                src: url('font/neodgm.ttf');
+            }
+
             body {
                 touch-action: none;
                 overscroll-behavior: none;
@@ -26,8 +31,8 @@
         <canvas id='screen' width='1280' height='720'></canvas>
         <script src='script/asset.js'></script>
         <script src='script/ui.js'></script>
-        <script src='script/vshader.js'></script>
-        <script src='script/fshader.js'></script>
+        <script src='script/shader/vshader.js'></script>
+        <script src='script/shader/fshader.js'></script>
 
         <script src='script/shape.js'></script>
         <script src='script/field.js'></script>
@@ -36,6 +41,7 @@
         <script src='script/entity/unit.js'></script>
         <script src='script/entity/player.js'></script>
         <script src='script/entity/enemy.js'></script>
+        <script src='script/entity/ghost.js'></script>
         <script src='script/entity/wall.js'></script>
         <script src='script/entity/belt.js'></script>
         <script src='script/entity/coin.js'></script>
@@ -46,6 +52,7 @@
         <script src='script/physics.js'></script>
         <script src='script/levelloader.js'></script>
         <script src='script/glconst.js'></script>
+        <script src='script/glvar.js'></script>
         <script src='script/glfunc.js'></script>
         <script src='script/render.js'></script>
         <script src='script/game.js'></script>
