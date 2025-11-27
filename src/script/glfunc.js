@@ -19,15 +19,20 @@ class GLFunc {
         gl.attachShader(glVar.program, glVar.fShader)
         gl.linkProgram(glVar.program)
 
-        glVar.location.pos = gl.getAttribLocation(glVar.program, 'pos')
-        glVar.location.aTexture = gl.getAttribLocation(glVar.program, 'a_texcoord')
+        glVar.location.uUI = gl.getUniformLocation(glVar.program, 'u_ui')
+        glVar.location.uDraw = gl.getUniformLocation(glVar.program, 'u_draw')
+        glVar.location.uColor = gl.getUniformLocation(glVar.program, 'u_color')
+        glVar.location.uMatTranslate = gl.getUniformLocation(glVar.program, 'u_mat_translate')
+        glVar.location.uMatScale = gl.getUniformLocation(glVar.program, 'u_mat_scale')
+        glVar.location.aPos = gl.getAttribLocation(glVar.program, 'a_pos')
+        glVar.location.aTexcoord = gl.getAttribLocation(glVar.program, 'a_texcoord')
 
-        glVar.buffer.triangle = gl.createBuffer(gl.ARRAY_BUFFER)
-        gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer.triangle)
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0.0, 0.0, 0.0, 1.0, 1.0, 0.0]), gl.STATIC_DRAW)
         glVar.buffer.ui = gl.createBuffer(gl.ARRAY_BUFFER)
         gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer.ui)
         gl.bufferData(gl.ARRAY_BUFFER, GLConst.bufferUIData, gl.STATIC_DRAW)
+        glVar.buffer.rect = gl.createBuffer(gl.ARRAY_BUFFER)
+        gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer.rect)
+        gl.bufferData(gl.ARRAY_BUFFER, GLConst.bufferRectData, gl.STATIC_DRAW)
 
         glVar.texture.ui = gl.createTexture()
         GLFunc.initTexture(gl, glVar.texture.ui)
@@ -44,5 +49,18 @@ class GLFunc {
     static renderInit(gl) {
         gl.clearColor(0.0, 0.0, 0.0, 1.0)
         gl.clear(gl.COLOR_BUFFER_BIT)
+    }
+
+    static drawProtoRect(gl, glVar, rect, color) {
+        gl.uniform1i(glVar.location.uUI, 0)
+        gl.uniform1i(glVar.location.uDraw, 1)
+        gl.uniform4f(glVar.location.uColor, color[0], color[1], color[2], color[3])
+        gl.uniformMatrix4fv(glVar.location.uMatScale, gl.FALSE, Mat4.getMatScale(rect.size))
+        gl.uniformMatrix4fv(glVar.location.uMatTranslate, gl.FALSE, Mat4.getMatTranslate(rect.pos))
+        gl.bindBuffer(gl.ARRAY_BUFFER, glVar.buffer.rect)
+        gl.vertexAttribPointer(glVar.location.aPos, 2, gl.FLOAT, gl.FALSE, 4 * 4, 0)
+        gl.enableVertexAttribArray(glVar.location.aPos)
+        gl.disableVertexAttribArray(glVar.location.aTexcoord)
+        gl.drawArrays(gl.TRIANGLES, 0, 6)
     }
 }
