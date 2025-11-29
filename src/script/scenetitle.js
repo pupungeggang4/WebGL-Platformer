@@ -16,7 +16,7 @@ class SceneTitle {
         Render.strokeRectUI(game.ctx, UI.title.buttonStart)
         Render.fillTextUI(game.ctx, "Start Game", UI.title.textStart)
 
-        GLFunc.renderInit(game.gl)
+        GLFunc.renderInit(gl, glVar)
         gl.uniform1i(glVar.location.uUI, 1)
         gl.uniform1i(glVar.location.uMode, 0)
         gl.bindTexture(gl.TEXTURE_2D, glVar.texture.ui)
