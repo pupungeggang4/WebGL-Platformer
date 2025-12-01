@@ -34,19 +34,23 @@ class GLFunc {
         gl.bufferData(gl.ARRAY_BUFFER, GLConst.bufferRectData, gl.STATIC_DRAW)
 
         glVar.texture.ui = gl.createTexture()
-        gl.bindTexture(gl.TEXTURE_2D, glVar.texture.ui)
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+        GLFunc.initTexture(gl, glVar.texture.ui)
 
         glVar.texture.player = gl.createTexture()
         GLFunc.initTexture(gl, glVar.texture.player)
+        GLFunc.setTextureImage(gl, glVar.texture.player, Img.player)
     }
     
     static initTexture(gl, tex) {
         gl.bindTexture(gl.TEXTURE_2D, tex)
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([255, 255, 255, 255]))
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST)
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST)
+    }
+
+    static setTextureImage(gl, tex, image) {
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, image.width, image.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, image)
     }
 
     static renderInit(gl, glVar) {

@@ -11,7 +11,6 @@ class Game {
         this.canvasUI.height = 720
         this.ctx = this.canvasUI.getContext('2d')
         GLFunc.glInit(this.gl, this.glVar)
-        Img.loadImage(this)
 
         this.keyPressed = {'left': false, 'right': false, 'jump': false}
         this.keyMapping = {'left': 'ArrowLeft', 'right': 'ArrowRight', 'jump': 'ArrowUp', 'interact': 'e'}

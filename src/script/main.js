@@ -5,8 +5,10 @@ window.oncontextmenu = rightClick
 let game
 
 function main() {
-    game = new Game()
-    game.run()
+    AssetManager.loadAsset(() => {
+        game = new Game()
+        game.run() 
+    })
 }
 
 function errorHandle(err, url, line, col, obj) {
