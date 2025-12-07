@@ -24,12 +24,13 @@ class Game {
 
     run() {
         this.scene = new SceneTitle(game)
+        this.field = new Field(game)
         this.gameLoop = requestAnimationFrame(() => this.loop())
     }
 
     loop() {
         this.frameCurrent = performance.now()
-        this.delta = this.frameCurrent - this.previous
+        this.delta = this.frameCurrent - this.framePrevious
         this.framePrevious = performance.now()
 
         this.scene.loop(this)

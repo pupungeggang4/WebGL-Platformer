@@ -5,6 +5,11 @@ class SceneMain {
     }
 
     loop(game) {
+        if (game.menu === false) {
+            if (game.state === '') {
+                game.field.handleTick(game)
+            }
+        }
         this.render(game)
     }
 
@@ -13,7 +18,7 @@ class SceneMain {
         let glVar = game.glVar
         Render.initClear(game.canvas, game.ctx)
         GLFunc.renderInit(gl, glVar)
-        GLFunc.drawTexRectCam(gl, glVar, this.rect, this.cam, glVar.texture.player)
+        game.field.render(game)
     }
 
     keyDown(game, key) {
